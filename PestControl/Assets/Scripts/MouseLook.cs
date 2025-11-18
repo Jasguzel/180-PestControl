@@ -22,9 +22,10 @@ public class MouseLook : MonoBehaviour
     void Update()
     {
 
-
+        //this holds the x and y values while using a mouse to look around
         var md = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
+        //this is the smoothness and sensitivity of the mouse when looking around up/down left/right.
         md = Vector2.Scale(md, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
         smoothV.x = Mathf.Lerp(smoothV.x, md.x, 1f / smoothing);
         smoothV.y = Mathf.Lerp(smoothV.y, md.y, 1f / smoothing);
