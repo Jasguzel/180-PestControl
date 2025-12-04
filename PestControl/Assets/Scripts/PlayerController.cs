@@ -32,6 +32,9 @@ public class PlayerController : MonoBehaviour
     public float playerJump = 7;
     Vector3 playerDirection;
 
+    public float totalScore = 0f;
+
+
 
     // Start is called before the first frame update
     void Start()

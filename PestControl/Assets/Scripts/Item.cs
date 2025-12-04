@@ -12,7 +12,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     public string itemsName = "";
-    public int doubloons = 0;
+    public int doubloons = 0; //discuss w team
     public TMP_Text nameText;
     public TMP_Text costText;
 
