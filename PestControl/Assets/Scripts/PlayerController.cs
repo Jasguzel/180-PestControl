@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.ProBuilder.AutoUnwrapSettings;
 
 
 /*
@@ -18,8 +19,16 @@ public class PlayerController : MonoBehaviour
     private float frontWall, backWall, leftWall, rightWall = 2f;
     //The is_grounded will check if you are .1 unity unit from the ground (referenced from array inventory unity project)
     private bool isGrounded;
+    //this part calls the rigid body and gets player to jump
+    private float jump = 7f;
+    private float doublejump = 7f;
+    private Rigidbody rb;
 
 
+    public float floorCheckDist = 1.1f;
+    public float fall = 7f;
+    public int fallAmount = 1;
+    public int jumpAmount = 1;
     public float playerJump = 7;
     Vector3 playerDirection;
 
@@ -29,11 +38,15 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         body = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        PlayerJump();
+
+
         float translation = Input.GetAxis("Vertical") * 10 * Time.deltaTime;
         float straffe = Input.GetAxis("Horizontal") * 10 * Time.deltaTime;
 
@@ -138,5 +151,39 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
 
+    }
+    private void PlayerJump()
+    {
+        if ((Input.GetKeyDown(KeyCode.Space)) && TouchingGround())
+        {
+            //AddForce is for jumping and using earth gravity, can ajust gravity... Impulse give it the tappy state
+            rb.AddForce(Vector3.up * jump, ForceMode.Impulse);
+        }
+        else if ((Input.GetKey(KeyCode.X)) && fallAmount > 0)
+        {
+            //This is to force the player down if they are in air and want to go down but cant spam infinetly
+            rb.AddForce(Vector3.down * fall, ForceMode.Impulse);
+
+            fallAmount--;
+        }
+        else if (((Input.GetKeyDown(KeyCode.Space)) && jumpAmount > 0))
+        {
+            //This aloows the player to double jump but only once per ground touch
+            rb.AddForce(Vector3.up * doublejump, ForceMode.Impulse);
+
+            jumpAmount--;
+        }
+    }
+    private bool TouchingGround()
+    {
+        bool isGrounded = false;
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, floorCheckDist))
+        {
+            isGrounded = true;
+            fallAmount = 1;
+            jumpAmount = 1;
+        }
+        return isGrounded;
     }
 }
