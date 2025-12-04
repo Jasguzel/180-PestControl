@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SpiderScript : MonoBehaviour
 {
+    private int DetectionRange = 20;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,9 @@ public class SpiderScript : MonoBehaviour
     void Update()
     {
         
+    }
+    private void playerDetection()
+    {
+
     }
 }
