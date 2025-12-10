@@ -38,7 +38,8 @@ public class SpiderScript : MonoBehaviour
     //functions other than start and update begin here
     private void Awake()
     {
-        player = GameObject.Find("PlayerObj").transform;
+        //this will find the first instance of the object with the playercontroller script (inside angle bracket = <  >)
+        player = GameObject.FindFirstObjectByType<PlayerController>().transform;
         agent = GetComponent<NavMeshAgent>();
     }
     private void EnemyBehavior()
@@ -72,7 +73,9 @@ public class SpiderScript : MonoBehaviour
             SearchWalkPoint();
         }
         if (!walkPointSet)
+        {
             agent.SetDestination(walkPoint);
+        }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
@@ -97,23 +100,22 @@ public class SpiderScript : MonoBehaviour
     }
     private void AttackPlayer()
     {
-        agent.SetDestination(transform.position);
-
-        transform.LookAt(player);
-
-        if (alreadyAttacked)
+        if (!alreadyAttacked)
         {
+            agent.SetDestination(transform.position);
+            transform.LookAt(player);
             //The ranged attack behavior code goes here
             Rigidbody rb = Instantiate(webs, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 12f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 1f, ForceMode.Impulse);
-
+            rb.AddForce(transform.up * 3f, ForceMode.Impulse);
             alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            StartCoroutine(ResetAttack());
         }
+
     }
-    private void ResetAttack()
+    private IEnumerator ResetAttack()
     {
+        yield return new WaitForSeconds(timeBetweenAttacks);
         alreadyAttacked = false;
     }
     public void Damaged(int damage)
