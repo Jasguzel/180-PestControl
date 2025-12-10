@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 156567943221378985}
   - component: {fileID: 4899353217184707793}
   - component: {fileID: 7517767287807951376}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1411f8db044b7c34c97a9508542cf111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floorCheckDist: 1.1
+  fall: 7
+  fallAmount: 1
+  jumpAmount: 1
   playerJump: 7
+  totalScore: 0
 --- !u!1 &6482906133838008212
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +167,7 @@ GameObject:
   - component: {fileID: 8747731076115922567}
   - component: {fileID: 3210430942393312219}
   - component: {fileID: 8183046350135210303}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
