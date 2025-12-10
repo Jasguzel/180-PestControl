@@ -109,10 +109,12 @@ public class SpiderScript : MonoBehaviour
             rb.AddForce(transform.forward * 12f, ForceMode.Impulse);
             rb.AddForce(transform.up * 3f, ForceMode.Impulse);
             alreadyAttacked = true;
+            //you must set StartCoroutine
             StartCoroutine(ResetAttack());
         }
 
     }
+    //this is a coroutine, you must do exactly as shown below for it to start the timer
     private IEnumerator ResetAttack()
     {
         yield return new WaitForSeconds(timeBetweenAttacks);
