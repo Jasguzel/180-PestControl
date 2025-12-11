@@ -26,6 +26,6 @@ public class UIManager : MonoBehaviour
     {
         scoreText.text = "Score: " + playerController.totalScore;
         doubloonsText.text = "Doubloons: " + playerController.doubloons;
-        healthText.text = "Health Remaining: " playerController.playerHealth;
+        healthText.text = "Health Remaining: " + playerController.playerHealth;
     }
 }
