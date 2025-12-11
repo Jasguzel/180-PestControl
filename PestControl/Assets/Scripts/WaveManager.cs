@@ -18,12 +18,9 @@ public class WaveManager : MonoBehaviour
         InvokeRepeating("EnemySpawning", 1, enemySpawnRate);  
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// Spawns enemies
+    /// </summary>
     private void EnemySpawning()
     {
         Instantiate(enemyToSpawn, transform.position, transform.rotation);

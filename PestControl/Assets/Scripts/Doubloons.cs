@@ -17,7 +17,10 @@ public class Doubloons : MonoBehaviour
     {
         transform.Rotate(0, doubloonRotateSpeed * Time.deltaTime * 10, 0);
     }
-
+    /// <summary>
+    /// Checks for player collision with dooubloons
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerController>())

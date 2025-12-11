@@ -7,7 +7,6 @@ using UnityEngine;
  * 12/10/2025
  * Managing some UI Components 
  * 
- * FEEL FREE TO CHANGE JUST NEEDED FOR TESTING
  */
 public class UIManager : MonoBehaviour
 {
@@ -15,11 +14,6 @@ public class UIManager : MonoBehaviour
     public TMP_Text doubloonsText;
     public TMP_Text scoreText;
     public TMP_Text healthText;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
