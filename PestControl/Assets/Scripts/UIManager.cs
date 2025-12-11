@@ -5,7 +5,9 @@ using UnityEngine;
 /*
  * Guzeldere, Jasmine
  * 12/10/2025
- * Managing some UI Components
+ * Managing some UI Components 
+ * 
+ * FEEL FREE TO CHANGE JUST NEEDED FOR TESTING
  */
 public class UIManager : MonoBehaviour
 {
