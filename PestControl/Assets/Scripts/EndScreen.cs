@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+/// <summary>
+/// Alyza Castro
+/// 12/10/25
+/// script that controls the game over/end scene of game
+/// </summary>
 
 public class EndScreen : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void TryAgain()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SceneManager.LoadScene(0);
     }
 }
