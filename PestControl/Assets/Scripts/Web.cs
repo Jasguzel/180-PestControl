@@ -7,6 +7,9 @@ public class Web : MonoBehaviour
     public int webDamage = 1;
     void OnCollisionEnter(Collision collision)
     {
-        Destroy(gameObject);
+        if (!collision.collider.GetComponent<SpiderScript>())
+        {
+               Destroy(gameObject);
+        }
     }
 }

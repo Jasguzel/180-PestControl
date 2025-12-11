@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -20,6 +21,7 @@ public class SpiderScript : MonoBehaviour
     public float timeBetweenAttacks;
     bool alreadyAttacked;
     public GameObject webs;
+    [SerializeField] Transform webShooter;
 
     //different states the enemy is in
     public float sightRange, attackRange;
@@ -106,7 +108,7 @@ public class SpiderScript : MonoBehaviour
             agent.SetDestination(transform.position);
             transform.LookAt(player);
             //The ranged attack behavior code goes here
-            Rigidbody rb = Instantiate(webs, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            Rigidbody rb = Instantiate(webs, webShooter.position, webShooter.rotation);
             rb.AddForce(transform.forward * 12f, ForceMode.Impulse);
             rb.AddForce(transform.up * 3f, ForceMode.Impulse);
             alreadyAttacked = true;
