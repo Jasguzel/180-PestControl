@@ -4,6 +4,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+/*
+ * Frederick Southworth
+ * 12/10/2025
+ * This script shall control the spider, how it acts, moves, and interacts with things within the game
+ */
+
 public class SpiderScript : MonoBehaviour
 {
     public NavMeshAgent agent;

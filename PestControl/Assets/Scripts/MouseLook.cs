@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Frederick Southworth
+ * 12/10/2025
+ * This script shall control the player mouse look around
+ */
+
 public class MouseLook : MonoBehaviour
 {
     //This defines the bullet and firing position
