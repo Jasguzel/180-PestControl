@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Apple;
+using UnityEngine.SceneManagement;
 using static UnityEngine.ProBuilder.AutoUnwrapSettings;
 
 
@@ -217,6 +218,7 @@ public class PlayerController : MonoBehaviour
             if(playerHealth <= 0)
             {
                 Destroy(gameObject);
+                SceneManager.LoadScene(2);
             }
         }
     }
