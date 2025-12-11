@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
+    //This defines the bullet and firing position
+    public GameObject BulletPrefab;
+    public GameObject FirePos;
+
     Vector2 mouseLook;
     Vector2 smoothV;
     public float sensitivity = 5.0f;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Apple;
 using static UnityEngine.ProBuilder.AutoUnwrapSettings;
 
 
@@ -12,6 +13,14 @@ using static UnityEngine.ProBuilder.AutoUnwrapSettings;
 
 public class PlayerController : MonoBehaviour
 {
+    public int doubloons = 0;
+
+
+    //bullet shooting initalizers
+    [SerializeField] GameObject referenceProjectile;
+    [SerializeField] Transform barrel;
+    Vector3 destination;
+
 
     //This defines the rigid body on the player and then calls it in void start
     private Rigidbody body;
@@ -188,5 +197,23 @@ public class PlayerController : MonoBehaviour
             jumpAmount = 1;
         }
         return isGrounded;
+    }
+    public void CreateProjectile()
+    {
+        GameObject projectile = Instantiate(referenceProjectile, barrel.position, Quaternion.identity);
+        Destroy(projectile, 10);
+    }
+    public void OnFire()
+    {
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0));
+        RaycastHit hit;
+        if(Physics.Raycast(ray, out hit, Mathf.Infinity))
+        {
+            destination = hit.point;
+        }
+        else
+        {
+            destination = ray.GetPoint(100);
+        }
     }
 }
