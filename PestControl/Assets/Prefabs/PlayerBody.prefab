@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &321260288403203439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5460086417489283985}
+  m_Layer: 3
+  m_Name: Fireposition
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5460086417489283985
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321260288403203439}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0.92}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7280380143763395125}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1017660594775162951
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,7 +45,7 @@ GameObject:
   - component: {fileID: 156567943221378985}
   - component: {fileID: 4899353217184707793}
   - component: {fileID: 7517767287807951376}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: PlayerBody
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -29,12 +60,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017660594775162951}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.87, y: 1.78, z: 0.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2904349219285454305}
+  - {fileID: 5460086417489283985}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2242400811253059252
@@ -149,6 +181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1411f8db044b7c34c97a9508542cf111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doubloons: 0
+  referenceProjectile: {fileID: 644919105758365174, guid: 093c65dfff0298c4a92d1b5dc55f9d12, type: 3}
+  barrel: {fileID: 5460086417489283985}
   floorCheckDist: 1.1
   fall: 7
   fallAmount: 1
@@ -167,7 +202,7 @@ GameObject:
   - component: {fileID: 8747731076115922567}
   - component: {fileID: 3210430942393312219}
   - component: {fileID: 8183046350135210303}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -260,5 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b05ccb5cb4f4c714d89a8a840b967f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletPrefab: {fileID: 0}
+  FirePos: {fileID: 0}
   sensitivity: 5
   smoothing: 2

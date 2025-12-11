@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
 
     //bullet shooting initalizers
-    [SerializeField] GameObject referenceProjectile;
+    [SerializeField] GameObject Bullet;
     [SerializeField] Transform barrel;
     Vector3 destination;
 
@@ -56,6 +56,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            CreateProjectile();
+        }
         PlayerJump();
 
 
@@ -200,20 +204,7 @@ public class PlayerController : MonoBehaviour
     }
     public void CreateProjectile()
     {
-        GameObject projectile = Instantiate(referenceProjectile, barrel.position, Quaternion.identity);
-        Destroy(projectile, 10);
+        Instantiate(Bullet, barrel.position, barrel.rotation);
     }
-    public void OnFire()
-    {
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0));
-        RaycastHit hit;
-        if(Physics.Raycast(ray, out hit, Mathf.Infinity))
-        {
-            destination = hit.point;
-        }
-        else
-        {
-            destination = ray.GetPoint(100);
-        }
-    }
+
 }

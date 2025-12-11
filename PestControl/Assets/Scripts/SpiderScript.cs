@@ -8,7 +8,7 @@ public class SpiderScript : MonoBehaviour
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
-    public float health;
+    public float spiderHealth = 1;
 
     //this will be the enemies patrolling function
     public Vector3 walkPoint;
@@ -120,19 +120,16 @@ public class SpiderScript : MonoBehaviour
         yield return new WaitForSeconds(timeBetweenAttacks);
         alreadyAttacked = false;
     }
-    public void Damaged(int damage)
+    void OnCollisionEnter(Collision collision)
     {
-        health -= damage;
-
-        if (health <= 0)
+        if (GetComponent<Bullet>())
         {
-            Invoke(nameof(DestroyEnemy), 0.5f);
+            spiderHealth --;
+            if (spiderHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
+        
     }
-    private void DestroyEnemy()
-    {
-        Gizmos.color = Color.black;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, sightRange);    }
 }
