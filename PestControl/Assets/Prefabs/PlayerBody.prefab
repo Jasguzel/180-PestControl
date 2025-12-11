@@ -182,7 +182,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doubloons: 0
-  referenceProjectile: {fileID: 644919105758365174, guid: 093c65dfff0298c4a92d1b5dc55f9d12, type: 3}
+  playerHealth: 10
+  Bullet: {fileID: 644919105758365174, guid: 093c65dfff0298c4a92d1b5dc55f9d12, type: 3}
   barrel: {fileID: 5460086417489283985}
   floorCheckDist: 1.1
   fall: 7

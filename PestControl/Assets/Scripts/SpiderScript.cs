@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -120,16 +121,16 @@ public class SpiderScript : MonoBehaviour
         yield return new WaitForSeconds(timeBetweenAttacks);
         alreadyAttacked = false;
     }
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (GetComponent<Bullet>())
+        if (collision.collider.GetComponent<Bullet>())
         {
-            spiderHealth --;
+            spiderHealth--;
             if (spiderHealth <= 0)
             {
                 Destroy(gameObject);
             }
         }
-        
     }
+
 }

@@ -12,10 +12,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public int bulletDamage = -1;
+    public int bulletDamage = 1;
     Rigidbody rb;
     [SerializeField] float bulletSpeed;
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         Destroy(gameObject);
     }

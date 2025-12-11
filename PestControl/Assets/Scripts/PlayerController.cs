@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
 {
     public int doubloons = 0;
 
+    //player health stuff
+    public int playerHealth = 1;
 
     //bullet shooting initalizers
     [SerializeField] GameObject Bullet;
@@ -207,4 +209,15 @@ public class PlayerController : MonoBehaviour
         Instantiate(Bullet, barrel.position, barrel.rotation);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.GetComponent<Web>())
+        {
+            playerHealth--;
+            if(playerHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 }
